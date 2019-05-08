@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SMS</string>
+    <string name="txt_user">Lietotājs</string>
+    <string name="txt_email">E-pasts</string>
+    <string name="txt_password">Parole</string>
+    <string name="txt_register">Atļaut sazināties caur e-pastu</string>
+    <string name="txt_name">Nosaukums</string>
+    <string name="txt_addMaterial">Pievienot materiālu</string>
+    <string name="txt_addMaterial2">Tālāk</string>
+    <string name="txt_quantity">Daudzums(gab)</string>
+    <string name="txt_length">Garums(m)</string>
+    <string name="txt_width">Platums(m)</string>
+    <string name="txt_quantityL">Daudzums(L)</string>
+</resources>
