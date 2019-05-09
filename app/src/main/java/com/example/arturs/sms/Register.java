@@ -1,12 +1,10 @@
 package com.example.arturs.sms;
 
 import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,13 +14,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
 
-    DatabaseHelper db;
     private ImageButton register;
     private CheckBox checkbox;
     private EditText user, password, email;
@@ -31,8 +29,6 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         hideSystemUI();
-        db = new DatabaseHelper(this);
-
         user = (EditText) findViewById(R.id.txt_user);
         password = (EditText) findViewById(R.id.txt_password);
         email = (EditText) findViewById(R.id.txt_email);
@@ -44,19 +40,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(checkbox.isChecked() && user.length()!=0 && password.length()!=0 && email.length()!=0){
-
-                   String fuser = user.getText().toString();
-                   String femail = email.getText().toString();
-                    String fpassword = password.getText().toString();
-                    long val = db.addUser(fuser,femail, fpassword);
-                    if(val > 0){
-                        Toast.makeText(Register.this,"You have registered",Toast.LENGTH_SHORT).show();
-                        openDialog();
-                    }
-                    else{
-                        Toast.makeText(Register.this,"Registeration Error",Toast.LENGTH_SHORT).show();
-                    }
-
+                    openDialog();
                 }else{
                     Toast.makeText(Register.this, "Jāatļāuj saziņa caur e-pastu!", Toast.LENGTH_SHORT).show();
                 }
@@ -120,5 +104,4 @@ public class Register extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
-
 }
